@@ -1,0 +1,28 @@
+main {
+  width: 500px;
+}
+.title {
+  text-align: center;
+  margin-top: 110px;
+}
+
+img{
+  width:20%;
+}
+
+.input {
+  width:450px;
+  margin-top: 60px;;
+}
+
+p {
+  font-size: 19px;
+  text-align:center;
+}
+
+.copy-btn{
+  background-color: rgba(256,256,256,0.6)
+}
+
+
+
