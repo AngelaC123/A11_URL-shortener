@@ -22,12 +22,20 @@
   <div class="result mt-4">
     <p class="px-auto mb-0 text-primary">Success! Please use this link!</p>
     <div class="alert alert-info mt-2 d-flex align-item-center justify-content-between " role="alert">
-      <span class="align-middle p-0  d-flex align-items-center">
+      <span class="align-middle p-0  d-flex align-items-center" id="shorten-url">
         {{origin}}/{{name}}
       </span>
-      <button class="copy-btn btn btn-outline-info btn-sm ">copy</button>
+      <button class="copy-btn btn btn-outline-info btn-sm " onclick="onClickCopy()">copy</button>
     </div>
   </div>
+  <script>
+    function onClickCopy() {
+      const shortenUrl = document.querySelector('#shorten-url').innerText
+      navigator.clipboard.writeText(shortenUrl)
+      alert('The URL has been copied!')
+    }
+  </script>
+
   {{/if}}
 
 </div>
