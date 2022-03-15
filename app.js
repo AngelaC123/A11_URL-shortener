@@ -19,13 +19,13 @@ app.use(bodyParser.urlencoded({ extended: true }))
 
 
 app.get('/', (req, res) => {
-  console.log
   res.render('index')
 })
 
+// Generate shorten url
 app.post('/', (req, res) => {
 
-  const inputUrl = req.body.inputUrl
+  const inputUrl = req.body.inputUrl.trim()
   const name = generateName(5)
   const origin = req.headers.origin
 
@@ -41,13 +41,18 @@ app.post('/', (req, res) => {
     .catch(error => console.log('herror'))
 })
 
-// app.get('/:name', (req, res) => {
-//   return Url.findOne({ name: req.params.name })
-//     .then(url => {
-//       return res.redirect(url.inputUrl)
-//     })
-//     .catch(error => console.log('error'))
-// })
+
+app.get('/:name', (req, res) => {
+  return Url.findOne({ name: req.params.name })
+    .then(url => {
+      if (!url) {
+        return res.render('error', { errorUrl: `${req.headers.host}/${req.params.name}` })
+      }
+      res.redirect(url.inputUrl)
+    })
+    .catch(error => console.log('error'))
+})
+
 
 
 app.listen(port, () => {
