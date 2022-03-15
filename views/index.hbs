@@ -1,25 +1,33 @@
+{{!-- title --}}
+<div class="title container mx-auto">
+  <h2 class="mt-4">URL Shortener</h2>
+  <img class="mt-4" src="https://assets-lighthouse.alphacamp.co/uploads/image/file/16716/ExportedContentImage_00.png"
+    alt="">
+</div>
+
+
+{{!-- Input url --}}
 <div class="input mx-auto">
-  <form action="">
+  <form action="/" method="post">
     <div class="input-group">
-      <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-        placeholder="Input URL here">
-      {{!-- <div class="mt-2" style="text-align:center; "> --}}
-        <button class="btn btn-secondary ml-5 col-3 " type="submit">shorten</button>
-        {{!--
-      </div> --}}
-
+      <input type="text" class="form-control" placeholder="Input URL here" name="inputUrl" required
+        value=" {{inputUrl}}">
+      <button class="btn btn-secondary ml-5 col-3 " type="submit">shorten</button>
     </div>
-
   </form>
+
+
+  {{!-- New url --}}
+  {{#if name}}
   <div class="result mt-4">
     <p class="px-auto mb-0 text-primary">Success! Please use this link!</p>
     <div class="alert alert-info mt-2 d-flex align-item-center justify-content-between " role="alert">
       <span class="align-middle p-0  d-flex align-items-center">
-        http://xxx.xx.xx
+        {{origin}}/{{name}}
       </span>
-
       <button class="copy-btn btn btn-outline-info btn-sm ">copy</button>
     </div>
-
   </div>
+  {{/if}}
+
 </div>
